@@ -5,8 +5,6 @@ password = input("Enter your desired password. ")
 length = len(password)
 #Gather all possible characters in the password
 chars = input("What characters does the password consist of? ")
-#Converting all viable characters to an element in a list
-#cList = list(chars)
 #Guessed pw that will be filled out later
 guess = ""
 
