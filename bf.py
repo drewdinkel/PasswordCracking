@@ -1,9 +1,9 @@
 import itertools
 
 #Function to assign all variables (Global gives bruteForce() access to variables)
-def assign():
+def variables():
     #Get password to try and guess
-    global password; password = input("Enter your desired password. ")
+    global password; password = input("Enter the password you want to be bruteforced. ")
     global length; length = len(password)
     #Gather all possible characters in the password
     global chars; chars = input("What characters does the password consist of? ")
@@ -21,7 +21,3 @@ def bruteForce():
             print("You've found the password! The password is " + guess)
             #Exits the for loop once the password has been found
             break
-
-#Calls functions
-assign()
-bruteForce()
