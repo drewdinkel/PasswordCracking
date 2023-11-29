@@ -21,6 +21,7 @@ if __name__ == "__main__":
             #.join combines each iterator value into one complete string
             guess = "".join(x)
             print("Trying: " + guess)
+            #Checks if the guess is correct
             if (guess == password):
                 print("You've found the password! The password is " + guess)
                 #Exits the for loop once the password has been found
