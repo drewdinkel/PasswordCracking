@@ -1,6 +1,7 @@
-import hashlib
+import hashlib, bcrypt
 
-textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
+#textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
+textPath = "C:/Users/Owner/OneDrive/Desktop/Cybersecurity/Python/PasswordCracking/PasswordCracking/passList.txt"
 
 #if statement allows the functions only to be run when executed, not imported
 #__name__ = __main__ when run directly, but gets set to the name of the module when imported
@@ -31,8 +32,24 @@ if __name__ == "__main__":
                 print("Hash could not be found")
 
 if __name__ == "__main__":
-    def bcrypt():
-        print("BCrypt")
+    def bCrypt():
+        password = input("Enter the password you want to be cracked. ")
+        #Encodes password to prevent error in checkpw function
+        p = password.encode('utf-8')
+        passList = open(textPath, "r")
+        with open(textPath, "r") as passList:
+            for line in passList:
+                guess = line.replace("\n", "")
+                #Encodes guess to prevent error in checkpw function
+                g = guess.encode('utf-8')
+                print("Trying: " + guess)
+                #checkpw function checks if the guess is equal to the bcrypt hash
+                if (bcrypt.checkpw(g, p)):
+                    found = True
+                    print("You've found the password! The bcrypt hash " + password + " is " + guess + " in plain text.")
+                    break
+            if (found == False):
+                print("The password could not be located.")
 
 if __name__ == "__main__":
     #Function to crack sha256 hashes

@@ -1,4 +1,4 @@
-textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
+textPath = "passList.txt"
 #Variable to determine if the password was found
 found = False
 
@@ -25,3 +25,5 @@ if __name__ == "__main__":
             #If password wasn't found print so
             if (found == False):
                 print("The password could not be located.")
+
+dictAttack()

@@ -1,4 +1,4 @@
-import sys, itertools, hashlib
+import sys, itertools, hashlib, bcrypt
 
 
 #Sets password to users input (Must be entered hashed if using a hashed method)
@@ -84,8 +84,23 @@ def sha256():
             print("The password could not be found in the dictionary.")
 
 #Function to crack a bcrypt hash
-def bcrypt():
-    print("bcrypt still a work in progress.")
+def bCrypt():
+    #Encodes password to prevent error in checkpw function
+    p = password.encode('utf-8')
+    passList = open(textPath, "r")
+    with open(textPath, "r") as passList:
+        for line in passList:
+            guess = line.replace("\n", "")
+            #Encodes guess to prevent error in checkpw function
+            g = guess.encode('utf-8')
+            print("Trying: " + guess)
+            #checkpw function checks if the guess is equal to the bcrypt hash
+            if (bcrypt.checkpw(g, p)):
+                found = True
+                print("You've found the password! The bcrypt hash " + password + " is " + guess + " in plain text.")
+                break
+        if (found == False):
+            print("The password could not be located.")
 
 #Runs bruteforce
 if (sys.argv[2] == "-b"):
@@ -103,7 +118,7 @@ elif (sys.argv[2] == "-d"):
         sha256()
     #Runs bcrypt hash dictionary attack
     elif (sys.argv[3] == "-bc"):
-        bcrypt()
+        bCrypt()
     else:
         print("Not a valid argument. Check the readme.md for more information on proper arguments.")
 else:
