@@ -4,7 +4,9 @@ import sys, itertools, hashlib
 #Sets password to users input (Must be entered hashed if using a hashed method)
 password = sys.argv[1]
 #File location of the passList used for dictionary attacks
-textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
+#textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
+textPath = "C:/Users/Owner/OneDrive/Desktop/Cybersecurity/Python/PasswordCracking/PasswordCracking/passList.txt"
+
 
 
 #Import all password cracking functions
