@@ -14,7 +14,7 @@ textPath = "C:/Users/Owner/OneDrive/Desktop/Cybersecurity/Python/PasswordCrackin
 def bruteForce():
     l = input("How many characters is the password? ")
     length = int(l)
-    chars = input("What characters are used in the password? ")
+    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*?."
     #itertools.product factors (Ex. product("AB", "AB") => AA AB BA BB)
     for x in itertools.product(chars, repeat = length):
         #Sets guess equal to the next possible combination
