@@ -4,14 +4,10 @@ A conceptual program built to crack passwords through bruteforce combinations, b
 
 
 
-
-
 # Dependencies
 - passList.txt file
 
 For the dictionary attacks to work the textPath variable must be changed to wherever the passList.txt file has been saved on the user's computer.
-
-
 
 
 
@@ -26,15 +22,13 @@ First Argument:
 Second Argument (only used with dictionary):
 - -p = plaintext
 - -m = md5 hash
-- -s = sha256
-- -bc = bcrypt
+- -s = sha256 hash
+- -bc = bcrypt hash
 
 Examples:
 - python3 main.py dad3 -b
 - python3 main.py cliff -d -p
 - python3 main.py 5f4dcc3b5aa765d61d8327deb882cf99 -d -m
-
-
 
 
 
