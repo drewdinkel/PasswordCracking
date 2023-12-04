@@ -1,11 +1,47 @@
 import sys, itertools, hashlib, bcrypt
 
 
+
+#File location of the passList used for dictionary attacks
+textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
+#textPath = "C:/Users/Owner/OneDrive/Desktop/Cybersecurity/Python/PasswordCracking/PasswordCracking/passList.txt"
+
+
+
 #Sets password to users input (Must be entered hashed if using a hashed method)
 password = sys.argv[1]
-#File location of the passList used for dictionary attacks
-#textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
-textPath = "C:/Users/Owner/OneDrive/Desktop/Cybersecurity/Python/PasswordCracking/PasswordCracking/passList.txt"
+
+#Variables to determine which function is run
+type = ""
+mode = ""
+#sys.argv[2:] includes all arguments after 1
+argList = sys.argv[2:]
+
+#Checks all arguments after the password (1st argument)
+for arg in argList:
+    if (arg == "-b"):
+        mode = "bruteforce"
+    elif (arg == "-d"):
+        mode = "dictionary"
+    elif (arg == "-p"):
+        type = "plaintext"
+    elif (arg == "-m"):
+        type = "md5"
+    elif (arg == "-s"):
+        type = "sha256"
+    elif (arg == "-bc"):
+        type == "bcrypt"
+
+#Sets plaintext as default type if not stated otherwise
+if (type == ""):
+    type = "plaintext"
+#Sets dictionary as default mode if not stated otherwise
+if (mode == ""):
+    mode = "dictionary"
+#Doesn't allow hashes to be bruteforced. Instead sets type to plaintext
+if (mode == "bruteforce" and (type == "md5" or type == "sha256" or type == "bcrypt")):
+    print("Bruteforce and hashes are not a valid combination. Setting type to plaintext.\n")
+    type = "plaintext"
 
 
 
@@ -103,23 +139,19 @@ def bCrypt():
             print("The password could not be located.")
 
 #Runs bruteforce
-if (sys.argv[2] == "-b"):
+if (mode == "bruteforce"):
     bruteForce()
 #All dictionary attacks
-elif (sys.argv[2] == "-d"):
+elif (mode == "dictionary"):
     #Runs plain text dictionary attack
-    if (sys.argv[3] == "-p"):
+    if (type == "plaintext"):
         dictAttack()
     #Runs md5 hash dictionary attack
-    elif (sys.argv[3] == "-m"):
+    elif (type == "md5"):
         md5()
     #Runs sha256 hash dictionary attack
-    elif (sys.argv[3] == "-s"):
+    elif (type == "sha256"):
         sha256()
     #Runs bcrypt hash dictionary attack
-    elif (sys.argv[3] == "-bc"):
+    elif (type == "bcrypt"):
         bCrypt()
-    else:
-        print("Not a valid argument. Check the readme.md for more information on proper arguments.")
-else:
-    print("Not a valid argument. Check the readme.md for more information on proper arguments.")
