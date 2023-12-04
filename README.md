@@ -23,12 +23,13 @@ Second Argument (only used with dictionary):
 - -p = plaintext
 - -m = md5 hash
 - -s = sha256 hash
-- -bc = bcrypt hash
+- -bc = bcrypt hash (Password must be entered in '' to work)
 
 Examples:
 - python3 main.py dad3 -b
 - python3 main.py cliff -d -p
 - python3 main.py 5f4dcc3b5aa765d61d8327deb882cf99 -d -m
+- python3 main.py '$2y$10$wnHNwi6JjtGjV5CeB3JPV.5PW97fn2iQ9mX1nQ95yUmphTYFvpBnG' -d -bc
 
 
 
