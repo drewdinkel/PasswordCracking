@@ -4,8 +4,6 @@ import sys, itertools, hashlib, bcrypt
 
 #File location of the passList used for dictionary attacks
 textPath = "/home/goofygoober/Desktop/PasswordCracking/passList.txt"
-#textPath = "C:/Users/Owner/OneDrive/Desktop/Cybersecurity/Python/PasswordCracking/PasswordCracking/passList.txt"
-
 
 
 #Sets password to users input (Must be entered hashed if using a hashed method)
@@ -30,7 +28,7 @@ for arg in argList:
     elif (arg == "-s"):
         type = "sha256"
     elif (arg == "-bc"):
-        type == "bcrypt"
+        type = "bcrypt"
 
 #Sets plaintext as default type if not stated otherwise
 if (type == ""):
